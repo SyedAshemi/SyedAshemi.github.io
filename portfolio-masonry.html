@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - All Projects</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/Logo1.png">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Your Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Background styles */
+        body {
+            overflow-x: hidden;
+            background-color: #ffffff;
+            background-image: none !important;
+            background-size: 30px 30px;
+            background-position: 0 0, 15px 15px;
+            position: relative;
+            min-height: 100vh;
+            padding-bottom: 100px; /* Prevent footer from getting too close to the bottom */
+            margin: 0; /* Ensure no margin for body */
+        }
+    
+        /* Floating shape styles */
+        .floating-shape {
+            position: absolute;
+            background-color: #bbbbbb;
+            opacity: 0.6;
+            z-index: -1;
+            animation: float 10s ease-in-out infinite;
+        }
+    
+        /* Circle shapes */
+        .circle {
+            border-radius: 50%;
+            background-color: #bbbbbb;
+            opacity: 0.7;
+            animation-duration: 10s;
+            animation-timing-function: ease-in-out;
+        }
+    
+        .circle-1 {
+            width: 90px;
+            height: 90px;
+            top: 5%;
+            left: 5%;
+        }
+    
+        .circle-2 {
+            width: 120px;
+            height: 120px;
+            top: 15%;
+            left: 15%;
+        }
+    
+        .circle-3 {
+            width: 100px;
+            height: 100px;
+            top: 25%;
+            left: 25%;
+        }
+    
+        .circle-4 {
+            width: 90px;
+            height: 90px;
+            bottom: 5%;
+            right: 5%;
+            animation-duration: 12s;
+        }
+    
+        .circle-5 {
+            width: 120px;
+            height: 120px;
+            bottom: 15%;
+            right: 15%;
+            animation-duration: 14s;
+        }
+    
+        .circle-6 {
+            width: 100px;
+            height: 100px;
+            bottom: 25%;
+            right: 25%;
+            animation-duration: 16s;
+        }
+    
+        /* X shape styles */
+        .x-shape {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background-color: transparent;
+            z-index: -1;
+            animation-duration: 14s;
+            animation-timing-function: ease-in-out;
+        }
+    
+        .x-shape::before, .x-shape::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 100%;
+            background-color: #b3b3b3;
+            top: 0;
+            left: 0;
+            transform: rotate(45deg);
+        }
+    
+        .x-shape::after {
+            transform: rotate(-45deg);
+        }
+    
+        /* Positioning X shapes */
+        .x-shape-left {
+            left: 35%;
+            top: 40%;
+        }
+    
+        .x-shape-right {
+            right: 35%;
+            top: 40%;
+        }
+    
+        /* Keyframes for floating effect */
+        @keyframes float {
+            0% {
+                transform: translateX(0) translateY(0);
+            }
+            25% {
+                transform: translateX(150px) translateY(-100px);
+            }
+            50% {
+                transform: translateX(-200px) translateY(150px);
+            }
+            75% {
+                transform: translateX(100px) translateY(-200px);
+            }
+            100% {
+                transform: translateX(0) translateY(0);
+            }
+        }
+    
+        /* Logo container styling */
+        .logo-container {
+            position: absolute; /* Make it fixed at the top right corner */
+            top: -42px; /* Fully at the top */
+            right: 8px; /* Fully at the right */
+            width: 50px; /* Size of the circle */
+            height: 50px;
+            border-radius: 45%; /* Circle shape */
+            background-color: transparent; /* Grey color */
+            border: 3px solid #9f9f9f;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #9f9f9f; /* Dark grey color for the "SA" text */
+            font-size: 20px; /* Text size for "SA" */
+            font-weight: bold;
+            text-decoration: none; /* Remove underline from the link */
+            cursor: pointer;
+            z-index: 10; /* Make sure it's above other elements */
+            transition: background-color 0.3s ease;
+            
+        }
+        
+    
+        .logo-container:hover {
+            background-color: #e0e0e0; /* Hover effect */
+        }
+    
+        .logo-container a {
+            color: #9f9f9f;
+            text-decoration: none;
+        }
+    
+        /* Project detail button styling */
+        .project-detail-btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 8px 15px;
+            background-color: transparent;
+            color: rgba(255, 0, 0);
+            border: 2px solid red; /* Red border */
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    
+        .project-detail-btn:hover {
+            background-color: transparent;
+            border: 2px solid #d9534f; /* Slightly different red border on hover */
+            color: rgba(255, 0, 0, 1); /* Fully opaque red text on hover */
+        }
+    </style>
+    
+
+</head>
+
+<body>
+    <svg style="display: none;">
+        <symbol xmlns="http://www.w3.org/2000/svg" id="github" viewBox="0 0 24 24">
+            <path fill="currentColor" stroke="none" d="M12 0c-6.63 0-12 5.37-12 12 0 5.3 3.44 9.8 8.21 11.39.6.11.82-.26.82-.58 0-.28-.01-1.02-.02-2-3.34.72-4.04-1.61-4.04-1.61-.55-1.42-1.34-1.8-1.34-1.8-1.09-.74.08-.72.08-.72 1.2.09 1.83 1.24 1.83 1.24 1.07 1.82 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.67-.3-5.47-1.34-5.47-5.97 0-1.32.47-2.4 1.23-3.24-.12-.3-.54-1.52.12-3.16 0 0 1.02-.33 3.34 1.24a11.48 11.48 0 0 1 3.04-.41c1.03.01 2.07.14 3.04.41 2.32-1.57 3.34-1.24 3.34-1.24.66 1.64.24 2.86.12 3.16.76.84 1.23 1.92 1.23 3.24 0 4.64-2.8 5.67-5.47 5.97.43.37.81 1.1.81 2.22 0 1.6-.02 2.88-.02 3.27 0 .32.22.69.82.58 4.77-1.59 8.21-6.09 8.21-11.39 0-6.63-5.37-12-12-12z" />
+        </symbol>
+    </svg>
+
+    <div class="logo-container">
+        <a href="index.html">SA</a> <!-- Replace 'index.html' with your main page URL -->
+    </div>
+
+    <div class="container mt-5">
+        <h1 class="main-title">Projects</h1>
+        <div class="floating-shape circle circle-1"></div>
+        <div class="floating-shape circle circle-2"></div>
+        <div class="floating-shape circle circle-3"></div>
+        <div class="floating-shape circle circle-4"></div>
+        <div class="floating-shape circle circle-5"></div>
+        <div class="floating-shape circle circle-6"></div>
+        <div class="portfolio-container">
+            <!-- Project 1 -->
+            <div class="portfolio-item" data-project-date="2025-02-22">
+                <img src="images/image1.png" class="img-fluid" alt="Project 1 Image">
+                <div class="portfolio-details">
+                    <h4>Project #1</h4>
+                    <button class="project-detail-btn" data-bs-toggle="collapse" data-bs-target="#projectDetails1">
+                        Project Details
+                    </button>
+                    <div id="projectDetails1" class="collapse mt-3">
+                        <p><strong>Title:</strong> Syed's Portfolio</p>
+                        <p><strong>Description: </strong> My portfolio features a single-page application with a mobile-responsive design — both new concepts I enjoyed learning! HTML structures the content, CSS styles it, and JavaScript manages interactions (like toggling this description). I’ll keep updating and improving this project over time.</p>
+                        <p><strong>Skills Used:</strong> HTML, CSS, JavaScript</p>
+                        <p><strong>Date:</strong> January 2025 - Present</p>
+                        <a href="https://github.com/yourusername/project1" class="github-link">
+                            <svg width="24" height="24">
+                                <use xlink:href="#github"></use>
+                            </svg>
+                            GitHub Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="portfolio-item" data-project-date="2024-12-15">
+                <img src="images/image2.png" class="img-fluid" alt="Project 2 Image">
+                <div class="portfolio-details">
+                    <h4>Project #2</h4>
+                    <button class="project-detail-btn" data-bs-toggle="collapse" data-bs-target="#projectDetails2">
+                        Project Details
+                    </button>
+                    <div id="projectDetails2" class="collapse mt-3">
+                        <p><strong>Title:</strong> An Examination Of The Impact Of Cerebromicrovascular Disease On Elderly People With Diabetes</p>
+                        <p><strong>Description:</strong> Worked with two students to analyze ECG signals from diabetic and control groups using the CVES database. Used MATLAB for signal processing (notch filtration, Pan-Tompkins algorithm) and logistic regression for classification. Extracted PQRST points and intervals to explore the link between diabetes and cerebrovascular health.</p>
+                        <p><strong>Skills Used:</strong> MATLAB, Machine Learning</p>
+                        <p><strong>Date:</strong> September 2024 - December 2024</p>
+                        <a href="https://github.com/SyedAshemi/An-Examination-Of-The-Impact-Of-Cerebromicrovascular-Disease-On-Elderly-People-With-Diabetes" class="github-link">
+                            <svg width="24" height="24">
+                                <use xlink:href="#github"></use>
+                            </svg>
+                            GitHub Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="portfolio-item" data-project-date="2024-10-10">
+                <img src="images/image3.png" class="img-fluid" alt="Project 3 Image">
+                <div class="portfolio-details">
+                    <h4>Project #3</h4>
+                    <button class="project-detail-btn" data-bs-toggle="collapse" data-bs-target="#projectDetails3">
+                        Project Details
+                    </button>
+                    <div id="projectDetails3" class="collapse mt-3">
+                        <p><strong>Title:</strong> Monitoring Heart Rate From Finger-Tip PPG</p>
+                        <p><strong>Description:</strong> Designed a circuit with an Arduino Nano and a 3D-printed SpO2 pulse oximeter probe to measure heart rate from fingertip signals. Used LabVIEW for precise heart rate signal analysis and BPM calculation.</p>
+                        <p><strong>Skills Used:</strong> Arduino IDE, LabVIEW</p>
+                        <p><strong>Date:</strong> January 2024 - April 2024</p>
+                        <a href="https://github.com/SyedAshemi/-Monitoring-Heart-Rate-From-Finger-Tip-PPG" class="github-link">
+                            <svg width="24" height="24">
+                                <use xlink:href="#github"></use>
+                            </svg>
+                            GitHub Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="portfolio-item" data-project-date="2024-08-05">
+                <img src="images/image4.png" class="img-fluid" alt="Project 4 Image">
+                <div class="portfolio-details">
+                    <h4>Project #4</h4>
+                    <button class="project-detail-btn" data-bs-toggle="collapse" data-bs-target="#projectDetails4">
+                        Project Details
+                    </button>
+                    <div id="projectDetails4" class="collapse mt-3">
+                        <p><strong>Title:</strong> Signal Processing Of PPG, EMG, ECG, EEG</p>
+                        <p><strong>Description:</strong> Applied advanced signal processing techniques to analyze a variety of raw physiological signals, leveraging MATLAB for tasks like filtering, feature extraction, and noise reduction. Achieved accurate and reliable outcomes through careful signal manipulation and data analysis.</p>
+                        <p><strong>Skills Used:</strong> MATLAB, BIOPAC</p>
+                        <p><strong>Date:</strong> January 2024 - April 2024</p>
+                        <a href="https://github.com/SyedAshemi/Signal-Processing-Of-PPG-EMG-ECG-EEG-" class="github-link">
+                            <svg width="24" height="24">
+                                <use xlink:href="#github"></use>
+                            </svg>
+                            GitHub Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="portfolio-item" data-project-date="2024-07-20">
+                <img src="images/image5.png" class="img-fluid" alt="Project 5 Image">
+                <div class="portfolio-details">
+                    <h4>Project #5</h4>
+                    <button class="project-detail-btn" data-bs-toggle="collapse" data-bs-target="#projectDetails5">
+                        Project Details
+                    </button>
+                    <div id="projectDetails5" class="collapse mt-3">
+                        <p><strong>Title:</strong> Thermometer Motor System Simulation</p>
+                        <p><strong>Description:</strong> "Designed a system using the PIC24FJ128GA010 microcontroller to convert analog signals from a TMP36 temperature sensor into digital data. Integrated a DC fan to rotate based on temperature (above 30°C: counterclockwise, below 30°C: clockwise) and displayed real-time temperature and fan status on a virtual terminal. This project served as a comprehensive demonstration of the skills and concepts learned throughout the course.</p>
+                        <p><strong>Skills Used:</strong> C/C++, Proteus</p>
+                        <p><strong>Date:</strong> September 2023 - December 2023</p>
+                        <a href="https://github.com/SyedAshemi/-Thermometer-Motor-System-Simulation" class="github-link">
+                            <svg width="24" height="24">
+                                <use xlink:href="#github"></use>
+                            </svg>
+                            GitHub Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="portfolio-item" data-project-date="2024-06-30">
+                <img src="images/image6.png" class="img-fluid" alt="Project 6 Image">
+                <div class="portfolio-details">
+                    <h4>Project #6</h4>
+                    <button class="project-detail-btn" data-bs-toggle="collapse" data-bs-target="#projectDetails6">
+                        Project Details
+                    </button>
+                    <div id="projectDetails6" class="collapse mt-3">
+                        <p><strong>Title:</strong> Bio-engineering Organic & Artificial Heart Structures </p>
+                        <p><strong>Description:</strong> Collaborated with 8 biomedical engineering peers to explore 3D bioprinting using 'FRESH' technology, focusing on creating heart patches from patient DNA to improve heart transplant options.</p>
+                        <p><strong>Skills Used:</strong> MS Office, Research Literature</p>
+                        <p><strong>Date:</strong> January 2021 - April 2021</p>
+                        <a href="https://github.com/SyedAshemi/Bio-engineering-Organic-Artificial-Heart-Structures" class="github-link">
+                            <svg width="24" height="24">
+                                <use xlink:href="#github"></use>
+                            </svg>
+                            GitHub Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Your Custom JavaScript -->
+    <script>
+        $(document).ready(function() {
+            const portfolioContainer = $(".portfolio-container");
+            const portfolioItems = $(".portfolio-item");
+
+            // Function to sort portfolio items by date
+            function sortPortfolioItems() {
+                const itemsArray = portfolioItems.toArray();
+
+                itemsArray.sort((a, b) => {
+                    const dateA = new Date($(a).data("project-date"));
+                    const dateB = new Date($(b).data("project-date"));
+                    return dateB - dateA; // Sort in descending order (newest first)
+                });
+
+                // Append the sorted items back to the container
+                portfolioContainer.empty(); // Remove existing items
+                $(itemsArray).each(function() {
+                    portfolioContainer.append($(this)); // Append each item
+                });
+            }
+
+            sortPortfolioItems(); // Initial sorting
+
+        });
+    </script>
+    
+    
+</body>
+
+</html>
